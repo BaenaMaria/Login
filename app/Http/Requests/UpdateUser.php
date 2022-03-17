@@ -26,13 +26,12 @@ class UpdateUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required| string',
-            'email' => 'required| email',
-            'password' => 'required',
-            'DNI' => 'required |max:9 |min:9 | unique:user',
+
+            'name' => 'required',
+            'email' => 'required ',
             'role' => 'required|in:usuario,administrador,superAdministrador',
-
-
+            'DNI' => 'required |max:9 |min:9',
         ];
     }
-}
+ }
+

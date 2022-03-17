@@ -12,8 +12,11 @@ class LoginUser extends FormRequest
      * @return bool
      */
 
+    protected $primaryKey = 'id';
+    protected $table = 'users';
     protected $fillable = ['name', 'email', 'password', 'DNI','role'];
     public function authorize()
+
     {
 
         return true;
@@ -30,7 +33,7 @@ class LoginUser extends FormRequest
             'name' => 'required',
             'email' => 'required ',
             'password' => 'required',
-            'DNI' => 'required |max:9 |min:9 | unique',
+            'DNI' => 'required |max:9 |min:9 | unique:users',
             'role' => 'required|in:usuario,administrador,superAdministrador',
 
 

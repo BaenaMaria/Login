@@ -30,6 +30,8 @@ class UserController extends Controller
             $user ->role= $request->role;
             $user->save();
 
+            return redirect()->route('listaUsuario');
+
     }
 
     public function destroy(User $user){
