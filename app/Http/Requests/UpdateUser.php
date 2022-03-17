@@ -11,6 +11,8 @@ class UpdateUser extends FormRequest
      *
      * @return bool
      */
+
+    protected $fillable = ['name', 'email', 'password', 'DNI','role'];
     public function authorize()
     {
         return true;
@@ -24,10 +26,13 @@ class UpdateUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required |email',
+            'name' => 'required| string',
+            'email' => 'required| email',
             'password' => 'required',
-            'DNI' => 'required | max 9 | unique',
+            'DNI' => 'required |max:9 |min:9 | unique:user',
+            'role' => 'required|in:usuario,administrador,superAdministrador',
+
+
         ];
     }
 }

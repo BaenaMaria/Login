@@ -30,14 +30,17 @@
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registro de usuarios</a>
                         @endif
 
-                        @if (Route::has('plataforma.register'))
-                            <a href="{{ route('plataforma.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Crear plataforma</a>
+                        @if (Route::has('plataforma.reg'))
+                            <a href="{{ route('plataforma.reg') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registro de plataforma</a>
                         @endif
                         @if (Route::has('listaUsuario'))
                             <a href="{{ route('listaUsuario') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Lista de usuarios</a>
+                        @endif
+                        @if (Route::has('listaPlataforma'))
+                            <a href="{{ route('listaPlataforma') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Lista de plataformas</a>
                         @endif
                     @endauth
                 </div>

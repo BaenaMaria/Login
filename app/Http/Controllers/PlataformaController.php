@@ -13,10 +13,11 @@ class PlataformaController extends Controller
     protected function index()
     {
         $plataformas = Plataforma::all();
+        return view('listaPlataforma', compact('plataformas'));
 
     }
 
-    protected function register()
+    protected function reg()
     {
         return view('plataforma');
     }
@@ -33,6 +34,10 @@ class PlataformaController extends Controller
     {
         $plataforma= Plataforma::create($request->all());
         return view ('welcome');
+    }
+    public function destroy(Plataforma $plataforma){
+        $plataforma->delete();
+        return redirect()->route('listaPlataforma', $plataforma);
     }
 
     public function __construct()

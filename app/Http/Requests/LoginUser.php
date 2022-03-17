@@ -11,6 +11,8 @@ class LoginUser extends FormRequest
      *
      * @return bool
      */
+
+    protected $fillable = ['name', 'email', 'password', 'DNI','role'];
     public function authorize()
     {
 
@@ -28,8 +30,8 @@ class LoginUser extends FormRequest
             'name' => 'required',
             'email' => 'required ',
             'password' => 'required',
-            'DNI' => 'required | max 9 | unique',
-            'rol' => 'required|in:usuario,administrador,superAdministrador',
+            'DNI' => 'required |max:9 |min:9 | unique',
+            'role' => 'required|in:usuario,administrador,superAdministrador',
 
 
         ];

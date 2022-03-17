@@ -21,6 +21,7 @@ class User extends Authenticatable
 
 
     protected $primaryKey = 'id';
+    protected $table = 'users';
 
 
     protected $fillable = [
@@ -28,7 +29,7 @@ class User extends Authenticatable
         'email',
         'password',
         'DNI',
-        'rol'
+        'role'
 
     ];
 

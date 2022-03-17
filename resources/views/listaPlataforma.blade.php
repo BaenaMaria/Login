@@ -5,24 +5,28 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lista de usuarios</div>
+                <div class="card-header">Lista de plataformas</div>
 
                 <div class="card-body">
                     <ul class="list-group">
-                        @foreach ($users as $user)
+                        @foreach ($plataformas as $plataforma)
                             <li class="list-group-item">
                                 <div>
-                                    {{$user->id}}-{{$user->name}}, {{$user->email}}, {{$user->DNI}}, {{$user->role}}
+                                    {{$plataforma->id}}-{{$plataforma->name}}
                                 </div>
-
-                                <div>
-                                <form action="{{route('destroy', $user)}}" method="POST">
+                               <div>
+                                <form action="{{route('plataformaDestroy', $plataforma)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button  class="btn btn-danger" type="submit">Eliminar</button>
-                                </form>
 
-                                <a href="{{route('usuario.edit', $user)}}" class="btn btn-success" role="button">Editar</a>
+                                    <div
+                                        <button type="button" class="btn btn-warning">Modificar</button>
+                                    </div>
+                                </form>
+                               </div>
+
+
 
                             </li>
                         @endforeach

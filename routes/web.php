@@ -28,3 +28,10 @@ Route::get('/plataforma', [PlataformaController::class, 'reg'])->name('plataform
 Route::post('/plataforma/create', [PlataformaController::class, 'create'])->name('plataforma.create');
 Route::get('/listaUsuario', [UserController::class, 'index'])->name('listaUsuario');
 Route::delete('/listaUsuario/{user}', [UserController::class, 'destroy'])->name('destroy');
+Route::get('/listaPlataforma', [PlataformaController::class, 'index'])->name('listaPlataforma');
+Route::delete('/listaPlataforma/{plataforma}', [PlataformaController::class, 'destroy'])->name('plataformaDestroy');
+Route::get('/usuario/{user}/edit', [UserController::class, 'edit'])->name('usuario.edit');
+Route::put('/usuario/{user}', [UserController::class, 'update'])->name('usuario.update');
+
+
+
