@@ -12,7 +12,7 @@
                         @foreach ($users as $user)
                             <li class="list-group-item">
                                 <div>
-                                    {{$user->id}}-{{$user->name}}, {{$user->email}}, {{$user->DNI}}, {{$user->role}}
+                                    {{$user->id}}-{{$user->name}},{{$user->phone}}, {{$user->email}}, {{$user->DNI}}, {{$user->role}}
                                 </div>
 
                                 <div>

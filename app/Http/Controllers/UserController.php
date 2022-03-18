@@ -25,6 +25,7 @@ class UserController extends Controller
 
 
             $user->name= $request->name;
+            $user->phone= $request->phone;
             $user->email= $request->email;
             $user->DNI= $request->DNI;
             $user ->role= $request->role;
