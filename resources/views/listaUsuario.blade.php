@@ -11,18 +11,20 @@
                     <ul class="list-group">
                         @foreach ($users as $user)
                             <li class="list-group-item">
+
                                 <div>
-                                    {{$user->id}}-{{$user->name}},{{$user->phone}}, {{$user->email}}, {{$user->DNI}}, {{$user->role}}
+
+                                     {{$user->id}}     -       {{$user->name}}    -    {{$user->phone}}    -    {{$user->email}}    -    {{$user->DNI}}        {{$user->role}}
                                 </div>
 
                                 <div>
-                                <form action="{{route('destroy', $user)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button  class="btn btn-danger" type="submit">Eliminar</button>
-                                </form>
-
-                                <a href="{{route('usuario.edit', $user)}}" class="btn btn-success" role="button">Editar</a>
+                                    <form action="{{route('destroy', $user)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button  class="btn btn-secondary" type="submit">Eliminar</button>
+                                        <a href="{{route('usuario.edit', $user)}}" class="btn btn-secondary" role="button">Editar</a>
+                                    </form>
+                                    <hr>
                                 </div>
 
                             </li>

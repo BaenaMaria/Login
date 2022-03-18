@@ -12,17 +12,18 @@
                         @foreach ($plataformas as $plataforma)
                             <li class="list-group-item">
                                 <div>
-                                    {{$plataforma->id}}-{{$plataforma->name}}
+                                    {{$plataforma->id}} - {{$plataforma->name}}
                                 </div>
                                 <div>
                                     <form action="{{route('plataformaDestroy', $plataforma)}}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button  class="btn btn-danger" type="submit">Eliminar</button>
+                                        <button  class="btn btn-secondary" type="submit">Eliminar</button>
+                                        <a href="{{route('plataforma.edit', $plataforma)}}" class="btn btn-secondary" role="button">Editar</a>
                                     </form>
 
-                                    <a href="{{route('plataforma.edit', $plataforma)}}" class="btn btn-success" role="button">Editar</a>
-                                    </div>
+
+                                </div>
 
 
 

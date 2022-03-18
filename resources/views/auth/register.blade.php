@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
+
                 <div class="card-body">
                     <form method="POST" name='form'>
                         @csrf
@@ -15,7 +16,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="number" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +29,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Telefono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                <input  pattern="\[0-9]{9}" id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -38,10 +39,16 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="DNI" class="col-md-4 col-form-label text-md-end">DNI</label>
+                            <label for="DNI" class="col-md-4 col-form-label text-md-end" >DNI</label>
 
                             <div class="col-md-6">
-                                <input id="DNI" type="text" class="form-control" name="DNI">
+                                <input id="DNI" type="text" class="form-control" name="DNI" value="{{ old('DNI') }}" required autocomplete="DNI" autofocus>
+
+                                @error('DNI')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
 
@@ -84,13 +91,18 @@
                         <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">Roles</label>
                             <div class="col-md-6">
-                                <select name="role" id="role" class="form-select">
-                                    <option selected disable hidden>Roles</option>
-                                    <option value="administrador">administrador</option>
+                                <select name="role" id="role" class="form-select" required>
+
                                     <option value="usuario">usuario</option>
+                                    <option value="administrador">administrador</option>
 
                                 </select>
 
+                                @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                             </div>
                         </div>

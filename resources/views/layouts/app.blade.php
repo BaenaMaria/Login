@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AYUDAT autenticador') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -57,6 +57,27 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
+                                @if (Auth::user()->role =="administrador" || Auth::user()->role =="superAdministrador")
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+
+                                        <a class="dropdown-item" href="{{ route('register') }}" >Registro de usuarios</a>
+                                        <a class="dropdown-item" href="{{ route('plataforma.reg') }}">Registro de plataforma</a>
+                                        <a class="dropdown-item" href="{{ route('listaUsuario') }}" >Lista de usuarios</a>
+                                        <a class="dropdown-item" href="{{ route('listaPlataforma') }}">Lista de plataformas</a>
+                                    </div>
+                                @else
+
+                                @endif
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -67,6 +88,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
                         @endguest

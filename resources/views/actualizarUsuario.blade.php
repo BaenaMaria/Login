@@ -22,7 +22,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" >
+                                <input id="name" type="number" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" >
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Telefono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"  required autocomplete="phone" autofocus value="{{$user->phone}}">
+                                <input id="phone" pattern="\[0-9]{9}" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone"  required autocomplete="phone" autofocus value="{{$user->phone}}">
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -72,17 +72,21 @@
                         <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">Roles</label>
                             <div class="col-md-6">
-                                <select name="role" id="role" class="form-select">
-                                    <option selected disable hidden value="{{$user->role}}">{{$user->role}}</option>
-                                    <option value="administrador">administrador</option>
+                                <select name="role" id="role" class="form-select" required>
+
                                     <option value="usuario">usuario</option>
+                                    <option value="administrador">administrador</option>
 
                                 </select>
 
+                                @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                             </div>
                         </div>
-
 
                         <br>
                         <br>

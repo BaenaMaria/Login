@@ -7,6 +7,9 @@ use Illuminate\Validation\Rule;
 
 class UpdateEmpresa extends FormRequest
 {
+
+
+    protected $fillable = ['name'];
     /**
      * Determine if the user is authorized to make this request.
      *
