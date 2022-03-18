@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginEmpresa;
+use App\Http\Requests\UpdateEmpresa;
 use App\Models\Plataforma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -33,12 +34,29 @@ class PlataformaController extends Controller
     protected function create(LoginEmpresa $request)
     {
         $plataforma= Plataforma::create($request->all());
-        return view ('welcome');
+        return redirect()->route('listaPlataforma');
     }
+
+
     public function destroy(Plataforma $plataforma){
         $plataforma->delete();
         return redirect()->route('listaPlataforma', $plataforma);
     }
+    public function update(UpdateEmpresa $request, Plataforma $plataforma){
+
+
+        $plataforma->name= $request->name;
+        $plataforma->save();
+
+        return redirect()->route('listaPlataforma');
+
+    }
+    public function edit(Plataforma $plataforma)
+    {
+        return view('actualizarPlataforma', compact('plataforma'));
+
+    }
+
 
     public function __construct()
     {

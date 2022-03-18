@@ -23,6 +23,7 @@
                                 </form>
 
                                 <a href="{{route('usuario.edit', $user)}}" class="btn btn-success" role="button">Editar</a>
+                                </div>
 
                             </li>
                         @endforeach

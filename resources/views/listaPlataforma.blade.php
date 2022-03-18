@@ -14,17 +14,15 @@
                                 <div>
                                     {{$plataforma->id}}-{{$plataforma->name}}
                                 </div>
-                               <div>
-                                <form action="{{route('plataformaDestroy', $plataforma)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button  class="btn btn-danger" type="submit">Eliminar</button>
+                                <div>
+                                    <form action="{{route('plataformaDestroy', $plataforma)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button  class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
 
-                                    <div
-                                        <button type="button" class="btn btn-warning">Modificar</button>
+                                    <a href="{{route('plataforma.edit', $plataforma)}}" class="btn btn-success" role="button">Editar</a>
                                     </div>
-                                </form>
-                               </div>
 
 
 

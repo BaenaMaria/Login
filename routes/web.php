@@ -24,14 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/plataforma', [PlataformaController::class, 'reg'])->name('plataforma.reg');
-Route::post('/plataforma/create', [PlataformaController::class, 'create'])->name('plataforma.create');
+
 Route::get('/listaUsuario', [UserController::class, 'index'])->name('listaUsuario');
 Route::delete('/listaUsuario/{user}', [UserController::class, 'destroy'])->name('destroy');
-Route::get('/listaPlataforma', [PlataformaController::class, 'index'])->name('listaPlataforma');
-Route::delete('/listaPlataforma/{plataforma}', [PlataformaController::class, 'destroy'])->name('plataformaDestroy');
 Route::get('/usuario/{user}/edit', [UserController::class, 'edit'])->name('usuario.edit');
 Route::put('/usuario/{user}', [UserController::class, 'update'])->name('usuario.update');
 
-
-
+Route::get('/plataforma', [PlataformaController::class, 'reg'])->name('plataforma.reg');
+Route::post('/plataforma/create', [PlataformaController::class, 'create'])->name('plataforma.create');
+Route::get('/listaPlataforma', [PlataformaController::class, 'index'])->name('listaPlataforma');
+Route::delete('/listaPlataforma/{plataforma}', [PlataformaController::class, 'destroy'])->name('plataformaDestroy');
+Route::get('/plataforma/{plataforma}/edit', [PlataformaController::class, 'edit'])->name('plataforma.edit');
+Route::put('/plataforma/{pataforma}', [PlataformaController::class, 'update'])->name('plataforma.update');

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateEmpresa extends FormRequest
 {
@@ -24,7 +25,8 @@ class UpdateEmpresa extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'numeric|required|unique:plataformas',
+            'name'=>[Rule::unique('users')->ignore($this->plataforma)],
         ];
     }
 }
