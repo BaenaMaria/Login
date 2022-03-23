@@ -22,13 +22,13 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$plataforma->name}}" >
+                                <input id="name" type="text" class="form-control {{--@error('name') is-invalid @enderror"--}} name="name" value="{{$plataforma->name}}" >
 
-                                @error('name')
+                                {{-- @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
@@ -41,6 +41,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Actualizar plataforma') }}
                                 </button>
+                                <br>
+                                <br>
+                                <p id="msg"></p>
                             </div>
                         </div>
 
@@ -50,5 +53,31 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+                document.getElementById('form').addEventListener('submit',
+                    manejadorValidacion)
+            });
+    var msg = document.getElementById('msg');
+    var name = document.getElementById('name').value;
+
+    msg.innerText = '';
+
+    if (name.length == 0) {
+                    console.log('El nombre está vacío');
+                    msg.innerText = 'Debes escribir un nombre';
+                    return false;
+                }
+                if (!/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+$/i.test(name)) {
+                    console.log('Nombre mal escrito');
+                    msg.innerText = 'El nombre solo debe contener letras';
+                    return false;
+                }
+                this.submit();
+
+</script>
+
+@endsection
+
 
 @endsection

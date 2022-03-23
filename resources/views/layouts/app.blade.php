@@ -63,33 +63,37 @@
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
+
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
 
+
                                         <a class="dropdown-item" href="{{ route('register') }}" >Registro de usuarios</a>
                                         <a class="dropdown-item" href="{{ route('plataforma.reg') }}">Registro de plataforma</a>
                                         <a class="dropdown-item" href="{{ route('listaUsuario') }}" >Lista de usuarios</a>
                                         <a class="dropdown-item" href="{{ route('listaPlataforma') }}">Lista de plataformas</a>
+
                                     </div>
                                 @else
 
+
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+
+                                    </div>
                                 @endif
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-                                </div>
                             </li>
                         @endguest
                     </ul>

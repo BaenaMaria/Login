@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PlataformaController;
 use App\Http\Controllers\UserController;
 use App\Models\Plataforma;
@@ -22,8 +23,10 @@ Route::get('/', function () {
 })->name('welcome');
 
 Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::get('/listaUsuario', [UserController::class, 'index'])->name('listaUsuario');
 Route::delete('/listaUsuario/{user}', [UserController::class, 'destroy'])->name('destroy');
@@ -36,3 +39,6 @@ Route::get('/listaPlataforma', [PlataformaController::class, 'index'])->name('li
 Route::delete('/listaPlataforma/{plataforma}', [PlataformaController::class, 'destroy'])->name('plataformaDestroy');
 Route::get('/plataforma/{plataforma}/edit', [PlataformaController::class, 'edit'])->name('plataforma.edit');
 Route::put('/plataforma/{pataforma}', [PlataformaController::class, 'update'])->name('plataforma.update');
+
+
+Route::get('/register', [RegisterController::class, 'index'])->name ('register');

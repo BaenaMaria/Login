@@ -5,51 +5,38 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editar usuario') }}</div>
+                <div class="card-header">{{ __('Register') }}</div>
+
 
                 <div class="card-body">
-                    <form action = "{{route('usuario.update', $user)}}" method="POST" name='form' id='form'>
+                    <form method="POST" name='form' id='form'>
                         @csrf
-                        @method('put')
 
-                        <div class="row mb-3">
-                            <label for="name"  value="{{$user->id}}"class="col-md-4 col-form-label text-md-end">{{ __('Id')}} </label>
-                            <div class="col-md-6">
-                                <input id="id" type="text" class="form-control" name="id" value="{{$user->id}}" disabled>
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="number" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" >
+                                <input id="name" type="number" class="form-control" name="name" value="{{ old('name') }}" {{--required autocomplete="name" --}}autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Telefono') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" pattern="\[0-9]{9}" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone"  required autocomplete="phone" autofocus value="{{$user->phone}}">
+                                <input   id="phone" type="tel" class="form-control  value="{{ old('phone') }}" {{--required autocomplete="phone"--}}  autofocus>
 
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
                             </div>
                         </div>
-
                         <div class="row mb-3">
-                            <label for="DNI" class="col-md-4 col-form-label text-md-end">DNI</label>
+                            <label for="DNI" class="col-md-4 col-form-label text-md-end" >DNI</label>
 
                             <div class="col-md-6">
-                                <input id="DNI" type="text" class="form-control" name="DNI"  value="{{$user->DNI}}">
+                                <input id="DNI" type="text" class="form-control" name="DNI" value="{{ old('DNI') }}" {{--required autocomplete="DNI"--}} autofocus>
+
+
                             </div>
                         </div>
 
@@ -57,36 +44,57 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control  {{--@error('email') is-invalid @enderror" --}}name="email" value="{{ old('email') }}" {{--required autocomplete="email"--}}>
 
-                                @error('email')
+                                {{-- @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control"{{--@error('password') is-invalid @enderror"--}} name="password"  {{--required autocomplete="new-password"--}}>
+
+                                {{-- @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" {{--required autocomplete="new-password"--}}>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">Roles</label>
                             <div class="col-md-6">
-                                <select name="role" id="role" class="form-select" required>
+                                <select name="role" id="role" class="form-select" {{--required--}}>
 
                                     <option value="usuario">usuario</option>
                                     <option value="administrador">administrador</option>
 
                                 </select>
 
-                                @error('role')
+                                {{-- @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
 
                             </div>
                         </div>
+
 
                         <br>
                         <br>
@@ -95,13 +103,18 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Actualizar usuario') }}
+                                    {{ __('Register') }}
                                 </button>
                                 <br>
                                 <br>
                                 <p id="msg"></p>
                             </div>
                         </div>
+
+
+
+
+
 
                     </form>
                 </div>
@@ -120,13 +133,15 @@
     var phone = document.getElementById('phone').value;
     var dni = document.getElementById('DNI').value;
     var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var password2 = document.getElementById('password-confirm').value;
     var role = document.getElementById('role').value;
 
 
     var numero, let, letra;
     var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
     var expresion = /\w+@\w+\.+[a-z]/;
-
+    var alfan = /^[a-zA-Z0-9]$/
 
     msg.innerText = '';
     dni = dni.toUpperCase();
@@ -197,7 +212,21 @@
                     msg.innerText = 'Debes escribir un contraseña mayor 8 letras y/o números';
                     return false;
         }
-
+        if (password2.length < 8) {
+            console.log('El formato de password no es válido');
+            msg.innerText = 'Debes escribir un contraseña mayor 8 letras y/o números';
+            return false;
+        }
+        if (password!=password2) {
+            console.log('El formato de password no es válido');
+            msg.innerText = 'La contraseña y la confirmación de la contraseña no coinciden';
+            return false;
+        }
+        if (!alfan.test(password)) {
+            console.log('El formato de password no es válido');
+            msg.innerText = 'La contraseña debe contener al menos un dígito, al menos una letra en mayúsculas y al menos una letra en minúsculas';
+            return false;
+        }
         if (role == "") {
             console.log('El role no es válido');
             msg.innerText = 'Debes seleccionar un rol';

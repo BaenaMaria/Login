@@ -26,8 +26,33 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+
+
+                        @if (Auth::user()->role =="administrador" || Auth::user()->role =="superAdministrador")
+
+                            <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('register') }}" >Registro de usuarios</a>
+                            <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('plataforma.reg') }}">Registro de plataforma</a>
+                            <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('listaUsuario') }}" >Lista de usuarios</a>
+                            <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('listaPlataforma') }}">Lista de plataformas</a>
+
+                        @endif
+
+
+                        @if (Auth::user()->role =="usuario")
+
+
+
+                        @endif
+
+
+
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('register') }}" >Registro de usuarios</a>
+                        <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('plataforma.reg') }}">Registro de plataforma</a>
+                        <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('listaUsuario') }}" >Lista de usuarios</a>
+                        <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('listaPlataforma') }}">Lista de plataformas</a>
 
 
                     @endauth
